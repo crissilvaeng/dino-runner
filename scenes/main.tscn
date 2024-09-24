@@ -13,12 +13,19 @@ script = ExtResource("1_d36gk")
 [node name="Bg" parent="." instance=ExtResource("1_qy3kl")]
 
 [node name="Ground" parent="." instance=ExtResource("2_qu4oq")]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Dino" parent="." instance=ExtResource("3_l41lx")]
 position = Vector2(153, 489)
+collision_layer = 3
+collision_mask = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+[node name="Camera2D" type="Camera2D" parent="Dino"]
+position = Vector2(52.875, -20.625)
+scale = Vector2(0.125, 0.125)
+limit_top = 0
+limit_bottom = 1152
 
 [node name="HUD" parent="." instance=ExtResource("5_cgpie")]
 

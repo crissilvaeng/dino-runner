@@ -29,7 +29,7 @@ var last_obs
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
-	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
+	ground_height = $Ground.get_node("Parallax2D").get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(new_game)
 	new_game()
 
@@ -49,7 +49,7 @@ func new_game():
 	#reset the nodes
 	$Dino.position = DINO_START_POS
 	$Dino.velocity = Vector2i(0, 0)
-	$Camera2D.position = CAM_START_POS
+	#$Camera2D.position = CAM_START_POS
 	$Ground.position = Vector2i(0, 0)
 	
 	#reset hud and game over screen
@@ -69,21 +69,21 @@ func _process(delta):
 		generate_obs()
 		
 		#move dino and camera
-		$Dino.position.x += speed
-		$Camera2D.position.x += speed
+		#$Dino.position.x += speed
+		#$Camera2D.position.x += speed
 		
 		#update score
 		score += speed
 		show_score()
 		
 		#update ground position
-		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
-			$Ground.position.x += screen_size.x
+		#if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
+			#$Ground.position.x += screen_size.x
 			
 		#remove obstacles that have gone off screen
-		for obs in obstacles:
-			if obs.position.x < ($Camera2D.position.x - screen_size.x):
-				remove_obs(obs)
+		#for obs in obstacles:
+			#if obs.position.x < ($Camera2D.position.x - screen_size.x):
+				#remove_obs(obs)
 	else:
 		if Input.is_action_pressed("ui_accept"):
 			game_running = true
